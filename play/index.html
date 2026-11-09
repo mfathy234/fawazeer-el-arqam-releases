@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<script>window.FAWAZEER_BUILD="1edd8f0ce0a6";</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>فوازير الأرقام · Fawazeer El Arqam</title>
+<meta name="description" content="A number crossword in an old Egyptian cafe: drag the numbers into the grid, with Haj Salhafa the tortoise and Asfoura the sparrow.">
+<meta name="theme-color" content="#14213a">
+<meta property="og:title" content="فوازير الأرقام · Fawazeer El Arqam">
+<meta property="og:description" content="The crossword, made of numbers. Drag, solve, and sip tea with Haj Salhafa.">
+<meta property="og:image" content="og.png?v=1edd8f0ce0a6">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="manifest" href="manifest.webmanifest?v=1edd8f0ce0a6">
+<link rel="icon" href="icons/favicon-48.png?v=1edd8f0ce0a6" sizes="48x48">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png?v=1edd8f0ce0a6">
+<link rel="stylesheet" href="style.css?v=1edd8f0ce0a6">
+</head>
+<body>
+<div id="game" dir="rtl">
+
+  <section class="screen show" id="splash" aria-label="Loading">
+    <div class="splash-host" id="splashHost"></div>
+    <p class="splash-text" lang="ar" dir="rtl">فوازير الأرقام</p>
+    <p class="splash-sub" data-t="boot"></p>
+  </section>
+
+  <section class="screen" id="menu" aria-label="Main menu">
+    <div class="bar">
+      <div class="chip coin"><span data-icon="coin"></span><b id="menuCoins">٠</b></div>
+      <div class="bar-right"><button class="round" type="button" id="btnSettings" data-t-aria="settings"><span data-icon="gear"></span></button><button class="round" type="button" id="menuMute"></button></div>
+    </div>
+    <div class="menu-col">
+      <header class="masthead">
+        <i class="rule"></i>
+        <h1 class="title" lang="ar" dir="rtl">فوازير الأرقام</h1>
+        <p class="latin">FAWAZEER EL ARQAM</p>
+        <i class="rule"></i>
+        <p class="tag" data-t="tagline"></p>
+      </header>
+      <div class="host" id="menuHostBox">
+        <div id="menuTortoise" class="host-art"></div>
+        <button class="bird" type="button" id="menuBird" aria-label="Asfoura"></button>
+        <div class="bubble" id="menuSay"></div>
+      </div>
+      <div class="menu-btns">
+        <button class="btn big mustard" type="button" id="btnPlay"><span data-icon="book"></span><span data-t="play"></span></button>
+        <div class="row">
+          <button class="btn teal" type="button" id="btnDaily"><span data-icon="calendar"></span><span data-t="daily"></span><i class="dot hidden" id="dailyDot"></i></button>
+          <button class="btn" type="button" id="btnFree"><span data-icon="dice"></span><span data-t="free"></span></button>
+        </div>
+        <div class="row">
+          <button class="btn" type="button" id="btnShop"><span data-icon="shop"></span><span data-t="shop"></span></button>
+          <button class="btn" type="button" id="btnTrophies"><span data-icon="trophy"></span><span data-t="trophies"></span><b class="count" id="trophyCount"></b></button>
+        </div>
+        <button class="btn pass" type="button" id="btnPass" data-t="passTry"></button>
+        <p class="pass-chip hidden" id="passChip"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen page" id="books" aria-label="Issues">
+    <div class="bar"><button class="btn small" type="button" id="booksBack"><span data-icon="chevR"></span><span data-t="back"></span></button><div class="chip coin"><span data-icon="coin"></span><b class="coinsVal">٠</b></div></div>
+    <h2 class="h2" data-t="booksTitle"></h2>
+    <div class="scroll" id="bookList"></div>
+  </section>
+
+  <section class="screen page" id="issue" aria-label="Issue">
+    <div class="bar"><button class="btn small" type="button" id="issueBack"><span data-icon="chevR"></span><span data-t="back"></span></button><div class="chip coin"><span data-icon="coin"></span><b class="coinsVal">٠</b></div></div>
+    <h2 class="h2" id="issueTitle"></h2>
+    <p class="sub" id="issueSub"></p>
+    <div class="scroll"><div id="puzzleGrid"></div></div>
+  </section>
+
+  <section class="screen page" id="free" aria-label="Free play">
+    <div class="bar"><button class="btn small" type="button" id="freeBack"><span data-icon="chevR"></span><span data-t="back"></span></button><div class="chip coin"><span data-icon="coin"></span><b class="coinsVal">٠</b></div></div>
+    <h2 class="h2" data-t="freeTitle"></h2>
+    <p class="sub" data-t="freeHint"></p>
+    <div class="stepper"><button class="btn small" type="button" id="gradeNext" aria-label="+"><span data-icon="chevR"></span></button><div class="step-mid"><small data-t="freeLevel"></small><b id="gradeVal"></b></div><button class="btn small" type="button" id="gradePrev" aria-label="-"><span data-icon="chevL"></span></button></div>
+    <div class="diffs" id="freeDiffs"></div>
+  </section>
+
+  <section class="screen page" id="dailyScr" aria-label="Daily puzzle">
+    <div class="bar"><button class="btn small" type="button" id="dailyBack"><span data-icon="chevR"></span><span data-t="back"></span></button><div class="chip coin"><span data-icon="coin"></span><b class="coinsVal">٠</b></div></div>
+    <h2 class="h2" data-t="dailyTitle"></h2>
+    <div class="daily-card">
+      <div class="host-art small" id="dailyHost"></div>
+      <p class="date" id="dailyDate"></p>
+      <div class="days" id="dailyDays"></div>
+      <p class="streak"><span data-icon="flame"></span><b id="dailyStreak"></b></p>
+      <p class="sub" id="dailyNote"></p>
+      <button class="btn big teal" type="button" id="dailyGo"></button>
+    </div>
+  </section>
+
+  <section class="screen page" id="trophies" aria-label="Trophies">
+    <div class="bar"><button class="btn small" type="button" id="trophiesBack"><span data-icon="chevR"></span><span data-t="back"></span></button><div class="chip coin"><span data-icon="coin"></span><b class="coinsVal">٠</b></div></div>
+    <h2 class="h2" data-t="trophiesTitle"></h2>
+    <p class="sub" id="trophiesSub"></p>
+    <div class="scroll" id="trophyList"></div>
+  </section>
+
+  <section class="screen page" id="shop" aria-label="Shop">
+    <div class="bar"><button class="btn small" type="button" id="shopBack"><span data-icon="chevR"></span><span data-t="back"></span></button><div class="chip coin"><span data-icon="coin"></span><b class="coinsVal">٠</b></div></div>
+    <h2 class="h2" data-t="shop"></h2>
+    <div class="shop-stage" id="shopStage"></div>
+    <div class="tabs" id="shopTabs" role="tablist"></div>
+    <p class="sub" data-t="shopHint"></p>
+    <div class="scroll"><div id="shopList"></div></div>
+  </section>
+
+  <section class="screen page" id="settings" aria-label="Settings">
+    <div class="bar"><button class="btn small" type="button" id="settingsBack"><span data-icon="chevR"></span><span data-t="back"></span></button><div class="chip coin"><span data-icon="coin"></span><b class="coinsVal">٠</b></div></div>
+    <h2 class="h2" data-t="settings"></h2>
+    <div class="scroll" id="settingsBody"></div>
+  </section>
+
+  <section id="cw" class="screen" dir="ltr" aria-label="Puzzle">
+    <header id="cwHud">
+      <button class="round" id="cwHome" type="button"></button>
+      <div class="chips">
+        <div class="chip"><span data-icon="coin"></span><b id="cwCoins"></b></div>
+        <div class="chip"><span data-icon="tick"></span><b id="cwProg"></b></div>
+        <div class="chip"><span data-icon="tea"></span><b id="cwTime"></b></div>
+      </div>
+      <button class="round" id="cwMute" type="button"></button>
+    </header>
+    <div id="cwTop">
+      <div id="cwHost" class="host-art"></div>
+      <div class="caption"><div class="note" id="cwNote"></div><div id="cwSay" class="tip"></div></div>
+      <div id="cwBird"></div>
+    </div>
+    <div id="cwBoard"><div id="cwGrid" role="group"></div></div>
+    <div id="cwFoot">
+      <div id="cwTray"></div>
+      <div id="cwTools">
+        <button class="tb" id="cwUndo" type="button"><span data-icon="undo"></span><span data-tc="undo"></span></button>
+        <button class="tb" id="cwHint" type="button"><span data-icon="hint"></span><span data-tc="hintB"></span><b class="bdg" id="cwHb"></b></button>
+        <button class="tb" id="cwShuf" type="button"><span data-icon="shuffle"></span><span data-tc="shuf"></span></button>
+        <button class="tb" id="cwRestart" type="button"><span data-icon="restart"></span><span data-tc="restart"></span></button>
+      </div>
+    </div>
+    <div id="cwFx"></div>
+  </section>
+
+  <div class="ov" id="winOv" role="dialog" aria-modal="true">
+    <div class="card paper">
+      <div class="host-art small" id="winHost"></div>
+      <h2 class="big" data-t="winTitle"></h2>
+      <div id="winStars"></div>
+      <div class="rec" id="winRec" data-t="record"></div>
+      <div class="stats">
+        <div class="stat"><b id="wTime"></b><span data-t="time"></span></div>
+        <div class="stat"><b id="wMist"></b><span data-t="mist"></span></div>
+        <div class="stat"><b id="wHints"></b><span data-t="hints"></span></div>
+        <div class="stat"><b id="wCoins"></b><span data-t="earned"></span></div>
+      </div>
+      <div class="notes" id="winNotes"></div>
+      <button class="btn big mustard" type="button" id="winNext" data-t="next"></button>
+      <div class="row"><button class="btn" type="button" id="winIssue" data-t="toIssue"></button><button class="btn" type="button" id="winMenu" data-t="toMenu"></button></div>
+    </div>
+  </div>
+
+  <div class="ov" id="confirm" role="alertdialog" aria-modal="true" aria-labelledby="confirmTitle">
+    <div class="card paper">
+      <h3 id="confirmTitle"></h3>
+      <p id="confirmBody"></p>
+      <button class="btn big brick" type="button" id="confirmYes"></button>
+      <button class="btn" type="button" id="confirmNo"></button>
+    </div>
+  </div>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+</div>
+
+<script src="src/data.js?v=1edd8f0ce0a6"></script>
+<script src="src/i18n.js?v=1edd8f0ce0a6"></script>
+<script src="art/core.js?v=1edd8f0ce0a6"></script>
+<script src="art/hats.js?v=1edd8f0ce0a6"></script>
+<script src="art/tortoise.js?v=1edd8f0ce0a6"></script>
+<script src="art/sparrow.js?v=1edd8f0ce0a6"></script>
+<script src="art/tiles.js?v=1edd8f0ce0a6"></script>
+<script src="art/items.js?v=1edd8f0ce0a6"></script>
+<script src="art/world.js?v=1edd8f0ce0a6"></script>
+<script src="art/sprites.js?v=1edd8f0ce0a6"></script>
+<script src="src/save.js?v=1edd8f0ce0a6"></script>
+<script src="src/shop.js?v=1edd8f0ce0a6"></script>
+<script src="src/meta.js?v=1edd8f0ce0a6"></script>
+<script src="src/solver.js?v=1edd8f0ce0a6"></script>
+<script src="src/gen.js?v=1edd8f0ce0a6"></script>
+<script src="src/board.js?v=1edd8f0ce0a6"></script>
+<script src="src/audio.js?v=1edd8f0ce0a6"></script>
+<script src="src/update.js?v=1edd8f0ce0a6"></script>
+<script src="src/ui.js?v=1edd8f0ce0a6"></script>
+<script src="src/render.js?v=1edd8f0ce0a6"></script>
+<script src="src/input.js?v=1edd8f0ce0a6"></script>
+<script src="src/play.js?v=1edd8f0ce0a6"></script>
+<script src="src/screens.js?v=1edd8f0ce0a6"></script>
+<script src="src/shopui.js?v=1edd8f0ce0a6"></script>
+<script src="src/settingsui.js?v=1edd8f0ce0a6"></script>
+<script src="src/main.js?v=1edd8f0ce0a6"></script>
+</body>
+</html>
