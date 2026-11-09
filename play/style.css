@@ -1,11 +1,11 @@
 /* Fawazeer El Arqam: old Egyptian puzzle-newspaper cafe. Newsprint cream with halftone dots, ink blue-black, mustard, brick red, turquoise.
    The page is fluid (any phone), centred and at most 520px wide; the board and tray size themselves from the space they get. */
-@font-face { font-family: Lalezar; src: url(fonts/lalezar-arabic-400-normal.woff2?v=1edd8f0ce0a6) format('woff2'); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF, U+200C-200F; font-display: swap; }
-@font-face { font-family: Lalezar; src: url(fonts/lalezar-latin-400-normal.woff2?v=1edd8f0ce0a6) format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; font-display: swap; }
-@font-face { font-family: Cairo; font-weight: 400; src: url(fonts/cairo-arabic-400-normal.woff2?v=1edd8f0ce0a6) format('woff2'); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF; font-display: swap; }
-@font-face { font-family: Cairo; font-weight: 700; src: url(fonts/cairo-arabic-700-normal.woff2?v=1edd8f0ce0a6) format('woff2'); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF; font-display: swap; }
-@font-face { font-family: Cairo; font-weight: 400; src: url(fonts/cairo-latin-400-normal.woff2?v=1edd8f0ce0a6) format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; font-display: swap; }
-@font-face { font-family: Cairo; font-weight: 700; src: url(fonts/cairo-latin-700-normal.woff2?v=1edd8f0ce0a6) format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; font-display: swap; }
+@font-face { font-family: Lalezar; src: url(fonts/lalezar-arabic-400-normal.woff2?v=60a96eaf6e9b) format('woff2'); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF, U+200C-200F; font-display: swap; }
+@font-face { font-family: Lalezar; src: url(fonts/lalezar-latin-400-normal.woff2?v=60a96eaf6e9b) format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; font-display: swap; }
+@font-face { font-family: Cairo; font-weight: 400; src: url(fonts/cairo-arabic-400-normal.woff2?v=60a96eaf6e9b) format('woff2'); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF; font-display: swap; }
+@font-face { font-family: Cairo; font-weight: 700; src: url(fonts/cairo-arabic-700-normal.woff2?v=60a96eaf6e9b) format('woff2'); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF; font-display: swap; }
+@font-face { font-family: Cairo; font-weight: 400; src: url(fonts/cairo-latin-400-normal.woff2?v=60a96eaf6e9b) format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; font-display: swap; }
+@font-face { font-family: Cairo; font-weight: 700; src: url(fonts/cairo-latin-700-normal.woff2?v=60a96eaf6e9b) format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; font-display: swap; }
 
 :root {
   --ink: #14213a; --inkSoft: #3a4863; --paper: #f1e6c8; --paperL: #f8f0da; --paperD: #e2d3ab; --white: #fffaf0;
@@ -58,7 +58,7 @@ svg.ic, [data-icon] svg { width: 1.25em; height: 1.25em; display: block; flex: n
 .bar-right { display: flex; gap: 8px; }
 .round { flex: none; width: 2.8rem; height: 2.8rem; padding: 0; display: grid; place-items: center; background: var(--paperL); border: 3px solid var(--ink); border-radius: 50%; box-shadow: 0 3px 0 var(--ink); }
 .round:active { transform: translateY(3px); box-shadow: none; }
-.round svg { width: 60%; height: 60%; }
+.round svg { width: 60%; height: 60%; } .round [data-icon] { display: grid; place-items: center; width: 100%; height: 100%; } .round [data-icon] svg { width: 1.5rem; height: 1.5rem; }
 
 /* Menu */
 .menu-col { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 10px; justify-content: space-between; padding-top: 4px; }
@@ -97,9 +97,9 @@ svg.ic, [data-icon] svg { width: 1.25em; height: 1.25em; display: block; flex: n
 .diffs { display: flex; flex-direction: column; gap: 12px; }
 .diff { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: .5em 1em; font-family: Lalezar; font-size: 1.5rem; background: var(--paperL); border: 3px solid var(--ink); border-radius: 14px; box-shadow: 0 4px 0 var(--ink); }
 .diff:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink); } .diff small { font-family: Cairo; font-weight: 700; font-size: .85rem; color: var(--inkSoft); } .diff.d0 { background: #d6efe9; } .diff.d1 { background: #f9e7b5; } .diff.d2 { background: #f2d1c4; }
-.daily-card { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 10px; padding: 14px; background: var(--paperL); border: 3px solid var(--ink); border-radius: 16px; box-shadow: 0 5px 0 var(--ink); }
+.daily-card { margin-block: auto; display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 14px; background: var(--paperL); border: 3px solid var(--ink); border-radius: 16px; box-shadow: 0 5px 0 var(--ink); }
 .daily-card .btn { align-self: stretch; } .date { margin: 0; font-family: Lalezar; font-size: 1.4rem; }
-.days { display: flex; gap: 6px; direction: ltr; } .day { width: 2.1rem; text-align: center; font-weight: 700; font-size: .72rem; } .day i { display: grid; place-items: center; width: 2.1rem; height: 2.1rem; margin-bottom: 2px; border: 3px solid var(--ink); border-radius: 9px; background: var(--paperD); } .day i.on { background: var(--teal); } .day i svg { width: 80%; height: 80%; } .day.today i { box-shadow: 0 0 0 3px var(--mustard); }
+.days { display: flex; gap: 6px; direction: ltr; } .day { width: 2.6rem; text-align: center; font-weight: 700; font-size: .66rem; white-space: nowrap; } .day i { margin: 0 auto 2px; display: grid; place-items: center; width: 2.1rem; height: 2.1rem; border: 3px solid var(--ink); border-radius: 9px; background: var(--paperD); } .day i.on { background: var(--teal); } .day i svg { width: 80%; height: 80%; } .day.today i { box-shadow: 0 0 0 3px var(--mustard); }
 .streak { display: flex; align-items: center; gap: 6px; margin: 0; font-family: Lalezar; font-size: 1.4rem; }
 .tr { display: flex; align-items: center; gap: 12px; margin: 10px 0; padding: 10px 12px; background: var(--paperL); border: 3px solid var(--ink); border-radius: 14px; box-shadow: 0 3px 0 var(--ink); } .tr.off { opacity: .55; filter: grayscale(.7); } .tr svg { width: 2.4rem; height: 2.4rem; flex: none; } .tr b { display: block; font-family: Lalezar; font-weight: 400; font-size: 1.2rem; } .tr small { font-weight: 700; color: var(--inkSoft); } .tr .reward { margin-inline-start: auto; display: flex; align-items: center; gap: 3px; font-family: Lalezar; direction: ltr; } .tr .reward svg { width: 1.2rem; height: 1.2rem; }
 .tabs { display: flex; gap: 8px; flex: none; margin-top: 8px; } .tabs button { flex: 1; padding: .3em .4em; font-family: Lalezar; font-size: 1.1rem; background: var(--paperD); border: 3px solid var(--ink); border-radius: 12px; } .tabs button.on { background: var(--mustard); box-shadow: 0 3px 0 var(--ink); }
@@ -117,10 +117,10 @@ svg.ic, [data-icon] svg { width: 1.25em; height: 1.25em; display: block; flex: n
 
 /* Puzzle screen */
 #cw { padding-bottom: 0; touch-action: manipulation; }
-#cwHud { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex: none; } .chips { display: flex; gap: 6px; } #cwHud .chip { min-height: 2.2rem; font-size: 1.05rem; padding: 0 .55em; }
-#cwTop { display: flex; align-items: flex-end; gap: 6px; flex: none; height: 5.4rem; margin-top: 8px; }
+#cwHud { display: flex; align-items: center; justify-content: space-between; gap: 6px; flex: none; } .chips { display: flex; gap: 5px; flex: 1; min-width: 0; justify-content: center; } #cwHud .chip { min-height: 2.2rem; font-size: 1.05rem; padding: 0 .55em; min-width: 0; } #cwHud .round { width: 2.5rem; height: 2.5rem; }
+#cwTop { display: flex; align-items: flex-end; gap: 6px; flex: none; height: 5.9rem; margin-top: 8px; }
 #cwHost { width: 5.2rem; height: 5.3rem; flex: none; z-index: 2; margin-bottom: -4px; } #cwBird { width: 3.6rem; height: 3.6rem; flex: none; z-index: 2; } #cwBird svg { width: 100%; height: 100%; overflow: visible; display: block; }
-.caption { flex: 1; min-width: 0; height: 4.2rem; margin-bottom: 4px; padding: 6px 10px; display: flex; flex-direction: column; justify-content: center; text-align: center; background: var(--paperL); border: 3px solid var(--ink); border-radius: 12px; box-shadow: 0 3px 0 var(--ink); direction: rtl; }
+.caption { flex: 1; min-width: 0; height: 4.7rem; margin-bottom: 4px; padding: 6px 10px; display: flex; flex-direction: column; justify-content: center; text-align: center; background: var(--paperL); border: 3px solid var(--ink); border-radius: 12px; box-shadow: 0 3px 0 var(--ink); direction: rtl; }
 .note { font-family: Lalezar; font-size: .85rem; color: var(--brickD); letter-spacing: .04em; } #cwSay { font-weight: 700; font-size: .88rem; line-height: 1.25; max-height: 2.5em; overflow: hidden; } #cwSay.bad { color: var(--brickD); } #cwSay.good { color: var(--tealD); }
 #cwBoard { flex: 1; min-height: 0; display: flex; overflow-x: hidden; overflow-y: auto; margin-top: 8px; padding: 6px; border-radius: 12px; background: var(--paperL); background-image: radial-gradient(circle, var(--dot) 1.3px, transparent 1.6px); background-size: 9px 9px; border: 3px solid var(--ink); box-shadow: 0 4px 0 var(--ink); touch-action: pan-y; overscroll-behavior: contain; }
 #cwGrid { position: relative; margin: auto; direction: ltr; flex: none; }
@@ -162,4 +162,5 @@ svg.ic, [data-icon] svg { width: 1.25em; height: 1.25em; display: block; flex: n
 .calm .beat, .calm .bird, .calm .splash-host, .calm .cell.pop, .calm .cell.shake, .calm .tl.land, .calm .sel, .calm .cf { animation: none !important; } .calm #winStars svg { animation: none; transform: scale(1); } .calm .cf { opacity: 0; }
 @media (prefers-reduced-motion: reduce) { .beat, .bird, .splash-host, .cell.pop, .cell.shake, .tl.land, .sel, .cf { animation: none !important; } #winStars svg { animation: none; transform: scale(1); } .cf { opacity: 0; } }
 @media (max-height: 700px) { .title { font-size: 2.4rem; } .host-art.small { width: 5rem; } .masthead .tag { display: none; } .btn.big { min-height: 3rem; } }
-@media (max-width: 350px) { #cwHud .chip svg, .tb svg { display: none; } .tb { font-size: .85rem; } }
+@media (max-width: 400px) { #cwHud .chip svg { width: 1em; height: 1em; } #cwHud .chip { font-size: .95rem; padding: 0 .4em; gap: .15em; } }
+@media (max-width: 350px) { #cwHud .chip svg, .tb svg { display: none; } .tb { font-size: .85rem; } #cwHost { width: 4.2rem; height: 4.3rem; } #cwBird { width: 2.6rem; height: 2.6rem; } #cwSay { font-size: .8rem; } }
