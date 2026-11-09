@@ -58,7 +58,7 @@ p{margin:0 0 1em}
 .stamp{display:inline-block;font:400 1.15rem/1 var(--display);color:var(--brickD);border:3px solid var(--brickD);border-radius:8px;padding:.25em .6em;transform:rotate(-5deg);background:rgba(248,240,218,.7);letter-spacing:.02em}
 .stamp.teal{color:var(--tealD);border-color:var(--tealD)}
 
-section{padding:clamp(40px,7vw,76px) 0}
+section{padding:clamp(32px,6vw,60px) 0}
 .sec-head{display:flex;align-items:center;gap:16px;margin-bottom:28px}
 .sec-head h2{flex:none}
 .sec-head::after{content:"";flex:1;height:7px;border-top:3px solid var(--ink);border-bottom:1.5px solid var(--ink)}
