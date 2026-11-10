@@ -1,6 +1,6 @@
 # فوازير الأرقام · Fawazeer El Arqam
 
-A number crossword in an old Egyptian puzzle-newspaper cafe: drag number tiles into crossing equations, and every puzzle has exactly one solution. Haj Salhafa the tortoise hosts, Asfoura the sparrow gives hints.
+Numbers and words in an old Egyptian puzzle-newspaper cafe: a number crossword (drag number tiles into crossing equations, every puzzle has exactly one solution) and four Arabic word games (Letter Wheel, Riddle of the Day, Secret Word, Proverb Column). Haj Salhafa the tortoise hosts, Asfoura the sparrow gives hints.
 
 **Play now: https://mfathy234.github.io/fawazeer-el-arqam-releases/play/**
 

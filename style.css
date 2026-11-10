@@ -103,6 +103,8 @@ section{padding:clamp(32px,6vw,60px) 0}
 .covers li{flex:none;width:128px;scroll-snap-align:start;text-align:center;font-weight:700;font-size:.88rem;line-height:1.3}
 .covers img{border-radius:6px;box-shadow:0 4px 0 var(--ink);margin-bottom:10px}
 .three{display:grid;gap:18px;grid-template-columns:1fr}
+.four{display:grid;gap:18px;grid-template-columns:1fr}
+#words .strip{margin-top:22px}
 
 /* shop */
 .shop{display:grid;gap:20px;grid-template-columns:1fr}
@@ -144,6 +146,7 @@ footer small{display:block;margin-top:12px;opacity:.9}
 @media (min-width:700px){
   .steps{grid-template-columns:repeat(3,1fr)}
   .three{grid-template-columns:repeat(3,1fr)}
+  .four{grid-template-columns:1fr 1fr}
   .facts{grid-template-columns:repeat(3,1fr)}
   .cast{grid-template-columns:1fr 1fr}
   .steps li+li{border-inline-start:1.5px solid var(--ink);padding-inline-start:18px}
