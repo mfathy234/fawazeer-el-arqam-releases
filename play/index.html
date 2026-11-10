@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<script>window.FAWAZEER_BUILD="60a96eaf6e9b";</script>
+<script>window.FAWAZEER_BUILD="e9d13765ec0b";</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>فوازير الأرقام · Fawazeer El Arqam</title>
-<meta name="description" content="A number crossword in an old Egyptian cafe: drag the numbers into the grid, with Haj Salhafa the tortoise and Asfoura the sparrow.">
+<meta name="description" content="Numbers and words in an old Egyptian cafe: a number crossword plus four Arabic word games, with Haj Salhafa the tortoise and Asfoura the sparrow.">
 <meta name="theme-color" content="#14213a">
 <meta property="og:title" content="فوازير الأرقام · Fawazeer El Arqam">
-<meta property="og:description" content="The crossword, made of numbers. Drag, solve, and sip tea with Haj Salhafa.">
-<meta property="og:image" content="og.png?v=60a96eaf6e9b">
+<meta property="og:description" content="A number crossword and four Arabic word games. Drag, spell, solve, and sip tea with Haj Salhafa.">
+<meta property="og:image" content="og.png?v=e9d13765ec0b">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="manifest" href="manifest.webmanifest?v=60a96eaf6e9b">
-<link rel="icon" href="icons/favicon-48.png?v=60a96eaf6e9b" sizes="48x48">
-<link rel="apple-touch-icon" href="icons/apple-touch-icon.png?v=60a96eaf6e9b">
-<link rel="stylesheet" href="style.css?v=60a96eaf6e9b">
+<link rel="manifest" href="manifest.webmanifest?v=e9d13765ec0b">
+<link rel="icon" href="icons/favicon-48.png?v=e9d13765ec0b" sizes="48x48">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png?v=e9d13765ec0b">
+<link rel="stylesheet" href="style.css?v=e9d13765ec0b">
+<link rel="stylesheet" href="words.css?v=e9d13765ec0b">
 </head>
 <body>
 <div id="game" dir="rtl">
@@ -43,11 +44,22 @@
         <button class="bird" type="button" id="menuBird" aria-label="Asfoura"></button>
         <div class="bubble" id="menuSay"></div>
       </div>
+      <div class="wdaily" id="dailyStrip" role="group" data-t-aria="dailyStrip"></div>
+      <div class="wtabs mtabs" id="menuTabs" role="tablist">
+        <button class="wtab on" type="button" role="tab" id="tabNum" aria-selected="true" data-t="tabNumbers"></button>
+        <button class="wtab" type="button" role="tab" id="tabWords" aria-selected="false" data-t="tabWords"></button>
+      </div>
       <div class="menu-btns">
-        <button class="btn big mustard" type="button" id="btnPlay"><span data-icon="book"></span><span data-t="play"></span></button>
-        <div class="row">
-          <button class="btn teal" type="button" id="btnDaily"><span data-icon="calendar"></span><span data-t="daily"></span><i class="dot hidden" id="dailyDot"></i></button>
-          <button class="btn" type="button" id="btnFree"><span data-icon="dice"></span><span data-t="free"></span></button>
+        <div class="mpanel" id="panelNum">
+          <button class="btn big mustard" type="button" id="btnPlay"><span data-icon="book"></span><span data-t="play"></span></button>
+          <div class="row">
+            <button class="btn teal" type="button" id="btnDaily"><span data-icon="calendar"></span><span data-t="daily"></span><i class="dot hidden" id="dailyDot"></i></button>
+            <button class="btn" type="button" id="btnFree"><span data-icon="dice"></span><span data-t="free"></span></button>
+          </div>
+        </div>
+        <div class="mpanel hidden" id="panelWords">
+          <div class="wcards" id="wCards"></div>
+          <p class="wstarsline" id="wordStars"></p>
         </div>
         <div class="row">
           <button class="btn" type="button" id="btnShop"><span data-icon="shop"></span><span data-t="shop"></span></button>
@@ -115,6 +127,11 @@
     <div class="scroll" id="settingsBody"></div>
   </section>
 
+  <section class="screen page wsec" id="wWheel" aria-label="Letter Wheel"></section>
+  <section class="screen page wsec" id="wRiddle" aria-label="Riddle of the Day"></section>
+  <section class="screen page wsec" id="wWordle" aria-label="Secret Word"></section>
+  <section class="screen page wsec" id="wProverb" aria-label="Proverb Column"></section>
+
   <section id="cw" class="screen" dir="ltr" aria-label="Puzzle">
     <header id="cwHud">
       <button class="round" id="cwHome" type="button"></button>
@@ -170,34 +187,52 @@
     </div>
   </div>
 
+  <div id="wFx"></div>
+
   <div id="toast" role="status" aria-live="polite"></div>
 </div>
 
-<script src="src/data.js?v=60a96eaf6e9b"></script>
-<script src="src/i18n.js?v=60a96eaf6e9b"></script>
-<script src="art/core.js?v=60a96eaf6e9b"></script>
-<script src="art/hats.js?v=60a96eaf6e9b"></script>
-<script src="art/tortoise.js?v=60a96eaf6e9b"></script>
-<script src="art/sparrow.js?v=60a96eaf6e9b"></script>
-<script src="art/tiles.js?v=60a96eaf6e9b"></script>
-<script src="art/items.js?v=60a96eaf6e9b"></script>
-<script src="art/world.js?v=60a96eaf6e9b"></script>
-<script src="art/sprites.js?v=60a96eaf6e9b"></script>
-<script src="src/save.js?v=60a96eaf6e9b"></script>
-<script src="src/shop.js?v=60a96eaf6e9b"></script>
-<script src="src/meta.js?v=60a96eaf6e9b"></script>
-<script src="src/solver.js?v=60a96eaf6e9b"></script>
-<script src="src/gen.js?v=60a96eaf6e9b"></script>
-<script src="src/board.js?v=60a96eaf6e9b"></script>
-<script src="src/audio.js?v=60a96eaf6e9b"></script>
-<script src="src/update.js?v=60a96eaf6e9b"></script>
-<script src="src/ui.js?v=60a96eaf6e9b"></script>
-<script src="src/render.js?v=60a96eaf6e9b"></script>
-<script src="src/input.js?v=60a96eaf6e9b"></script>
-<script src="src/play.js?v=60a96eaf6e9b"></script>
-<script src="src/screens.js?v=60a96eaf6e9b"></script>
-<script src="src/shopui.js?v=60a96eaf6e9b"></script>
-<script src="src/settingsui.js?v=60a96eaf6e9b"></script>
-<script src="src/main.js?v=60a96eaf6e9b"></script>
+<script src="src/data.js?v=e9d13765ec0b"></script>
+<script src="src/i18n.js?v=e9d13765ec0b"></script>
+<script src="src/words/wdata-dict.js?v=e9d13765ec0b"></script>
+<script src="src/words/wdata-riddles.js?v=e9d13765ec0b"></script>
+<script src="src/words/wdata-proverbs.js?v=e9d13765ec0b"></script>
+<script src="src/words/wi18n.js?v=e9d13765ec0b"></script>
+<script src="art/core.js?v=e9d13765ec0b"></script>
+<script src="art/hats.js?v=e9d13765ec0b"></script>
+<script src="art/tortoise.js?v=e9d13765ec0b"></script>
+<script src="art/sparrow.js?v=e9d13765ec0b"></script>
+<script src="art/tiles.js?v=e9d13765ec0b"></script>
+<script src="art/items.js?v=e9d13765ec0b"></script>
+<script src="art/world.js?v=e9d13765ec0b"></script>
+<script src="art/sprites.js?v=e9d13765ec0b"></script>
+<script src="src/save.js?v=e9d13765ec0b"></script>
+<script src="src/shop.js?v=e9d13765ec0b"></script>
+<script src="src/meta.js?v=e9d13765ec0b"></script>
+<script src="src/solver.js?v=e9d13765ec0b"></script>
+<script src="src/gen.js?v=e9d13765ec0b"></script>
+<script src="src/board.js?v=e9d13765ec0b"></script>
+<script src="src/words/wsave.js?v=e9d13765ec0b"></script>
+<script src="src/words/wutil.js?v=e9d13765ec0b"></script>
+<script src="src/words/wheelgen.js?v=e9d13765ec0b"></script>
+<script src="src/words/wordle-rules.js?v=e9d13765ec0b"></script>
+<script src="src/words/wmeta.js?v=e9d13765ec0b"></script>
+<script src="src/audio.js?v=e9d13765ec0b"></script>
+<script src="src/update.js?v=e9d13765ec0b"></script>
+<script src="src/ui.js?v=e9d13765ec0b"></script>
+<script src="src/render.js?v=e9d13765ec0b"></script>
+<script src="src/input.js?v=e9d13765ec0b"></script>
+<script src="src/play.js?v=e9d13765ec0b"></script>
+<script src="src/screens.js?v=e9d13765ec0b"></script>
+<script src="src/shopui.js?v=e9d13765ec0b"></script>
+<script src="src/settingsui.js?v=e9d13765ec0b"></script>
+<script src="src/words/wcore.js?v=e9d13765ec0b"></script>
+<script src="src/words/wslots.js?v=e9d13765ec0b"></script>
+<script src="src/words/wmenu.js?v=e9d13765ec0b"></script>
+<script src="src/words/wheel.js?v=e9d13765ec0b"></script>
+<script src="src/words/riddle.js?v=e9d13765ec0b"></script>
+<script src="src/words/wordle.js?v=e9d13765ec0b"></script>
+<script src="src/words/proverb.js?v=e9d13765ec0b"></script>
+<script src="src/main.js?v=e9d13765ec0b"></script>
 </body>
 </html>

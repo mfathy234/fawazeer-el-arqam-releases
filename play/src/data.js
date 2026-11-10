@@ -1,7 +1,7 @@
 /* Fawazeer El Arqam: ALL tuning lives here (puzzle sizes, booklets, rewards, prices, themes, achievements). Plain classic script, no imports. */
 
 const SAVE_KEY = 'fawazeer.save.v1';
-const APP_VERSION = '1.0.0';
+const APP_VERSION = '1.1.0';
 
 /* Puzzle difficulty. eq = equations, bl = blanks (tiles to place), dec = decoy tiles, w/h = max grid cells,
    par = seconds before the time penalty, coin = coins for 3 stars. */
@@ -73,9 +73,21 @@ const ACHIEVEMENTS = [
   { id: 'first', coins: 10 }, { id: 'solved10', coins: 30 }, { id: 'solved50', coins: 100 }, { id: 'solved150', coins: 250 },
   { id: 'stars3x10', coins: 50 }, { id: 'clean', coins: 40 }, { id: 'hardwin', coins: 60 }, { id: 'fast', coins: 40 },
   { id: 'daily3', coins: 40 }, { id: 'daily7', coins: 120 }, { id: 'booklet1', coins: 80 }, { id: 'allbooklets', coins: 500 },
-  { id: 'shopper', coins: 20 }, { id: 'collector', coins: 80 }
+  { id: 'shopper', coins: 20 }, { id: 'collector', coins: 80 },
+  { id: 'wheel1', coins: 20 }, { id: 'wheel10', coins: 80 }, { id: 'bonus25', coins: 40 }, { id: 'riddle5', coins: 30 }, { id: 'riddle20', coins: 100 },
+  { id: 'wordle1', coins: 20 }, { id: 'wordle2', coins: 60 }, { id: 'wordle7', coins: 120 }, { id: 'proverb10', coins: 60 }, { id: 'proverbAll', coins: 200 }, { id: 'wdays', coins: 50 }
 ];
 const FAST_SECONDS = 45;
+
+/* The word games (فوازير الكلمات): rewards, hint prices and sizes. Coins and the shop are shared with the number puzzles; the rules are in words/wmeta.js.
+   wheel: coins = base + perWord * words + perStar * stars. riddle: points fall with time and revealed letters, coins = points / 10 + 2.
+   wordle: coins = max(min, base - step * (tries - 1)). proverb: coins = (base + perWord * words + perStar * stars), halved on a replay. */
+const WORDS = {
+  wheel: { base: 10, perWord: 2, perStar: 5, dailyBonus: 20, freeHints: 3, hintCost: 5, revealCost: 15, bonusCoin: 1, minWord: 3 },
+  riddle: { dailyBonus: 15, revealPenalty: 15, maxPts: 100, minPts: 10, graceSec: 10, perSec: 0.5, stars3: 80, stars2: 50 },
+  wordle: { tries: 6, base: 40, step: 5, min: 10, lose: 3, dailyBonus: 20 },
+  proverb: { base: 10, perWord: 2, perStar: 5, freeHints: 2, hintCost: 5, replayShare: 0.5 }
+};
 
 /* Audio files, see tools/audio. */
 const AUDIO = { loopSec: 32, mp3Delay: 1105 / 24000 };

@@ -11,7 +11,7 @@ const mmss = sec => nf(Math.floor(sec / 60) + ':' + String(Math.floor(sec % 60))
 const STR = {
   title: ['فوازير الأرقام', 'Fawazeer El Arqam'],
   latin: ['FAWAZEER EL ARQAM', 'FAWAZEER EL ARQAM'],
-  tagline: ['الكلمات المتقاطعة.. بالأرقام!', 'The crossword, made of numbers!'],
+  tagline: ['أرقام وكلمات.. وسهرة على القهوة!', 'Numbers and words, over a cafe table!'],
   masthead: ['جريدة الألغاز الحسابية', 'The Number Puzzle Gazette'],
   play: ['الأعداد', 'Issues'],
   free: ['لعب حر', 'Free play'],

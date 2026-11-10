@@ -1,4 +1,4 @@
-/* Small UI art: coin, stars, lock and the button icons. All on a 24 x 24 grid, ink outlines, mustard / turquoise / brick accents.
+/* Small UI art: coin, stars, lock and the button icons (the last nine, from ok to copy, are used by the word games). All on a 24 x 24 grid, ink outlines, mustard / turquoise / brick accents.
    ICON_ART maps a name to an SVG fragment; icon(name) wraps it. */
 
 const I = 'stroke="#14213a" stroke-linecap="round" stroke-linejoin="round"';
@@ -27,7 +27,16 @@ const ICON_ART = {
   close: `<path d="M6 6l12 12M18 6L6 18" fill="none" ${I} stroke-width="3"/>`,
   chevL: `<path d="M15 5l-7 7 7 7" fill="none" ${I} stroke-width="3"/>`,
   chevR: `<path d="M9 5l7 7-7 7" fill="none" ${I} stroke-width="3"/>`,
-  tea: `<path d="M7 5h10l-1.500 12a3.500 3.500 0 0 1-7 0z" fill="${K.tea}" ${I} stroke-width="2.200"/><path d="M5 20h14" fill="none" ${I} stroke-width="2.200"/>`
+  tea: `<path d="M7 5h10l-1.500 12a3.500 3.500 0 0 1-7 0z" fill="${K.tea}" ${I} stroke-width="2.200"/><path d="M5 20h14" fill="none" ${I} stroke-width="2.200"/>`,
+  ok: `<path d="M4.500 12.500l5 5L19.500 6.500" fill="none" ${I} stroke-width="3.200"/>`,
+  bksp: `<path d="M9 5.500h11.500v13H9L3 12z" fill="${K.paperLight}" ${I} stroke-width="2.200"/><path d="M12.500 9.500l5 5m0-5l-5 5" fill="none" ${I} stroke-width="2.200"/>`,
+  wheel: `<circle cx="12" cy="12" r="9" fill="${K.paperLight}" ${I} stroke-width="2.200"/><g fill="${K.mustard}" ${I} stroke-width="1.600"><circle cx="12" cy="5.800" r="2.300"/><circle cx="17.500" cy="9" r="2.300"/><circle cx="17.500" cy="15" r="2.300"/><circle cx="12" cy="18.200" r="2.300"/><circle cx="6.500" cy="15" r="2.300"/><circle cx="6.500" cy="9" r="2.300"/></g>`,
+  riddle: `<circle cx="12" cy="12" r="9" fill="${K.mustardLight}" ${I} stroke-width="2.200"/><path d="M9 9.500a3 3 0 1 1 4.600 2.500c-1 .6-1.600 1.200-1.600 2.500" fill="none" ${I} stroke-width="2.400"/><circle cx="12" cy="17.300" r="1.300" fill="#14213a"/>`,
+  tiles: `<g ${I} stroke-width="2"><rect x="2.500" y="8.500" width="6" height="7" rx="1.500" fill="${K.teal}"/><rect x="9" y="8.500" width="6" height="7" rx="1.500" fill="${K.mustard}"/><rect x="15.500" y="8.500" width="6" height="7" rx="1.500" fill="${K.paperDark}"/></g>`,
+  column: `<rect x="5" y="3.500" width="14" height="17" rx="1.500" fill="${K.paperLight}" ${I} stroke-width="2.200"/><path d="M8 7.500h8M8 11h8M8 14.500h5" stroke="#14213a" stroke-width="1.800" stroke-linecap="round"/><rect x="8" y="16.800" width="3.500" height="1.800" fill="${K.brick}"/>`,
+  eye: `<path d="M2.500 12S6 6 12 6s9.500 6 9.500 6-3.500 6-9.500 6S2.500 12 2.500 12z" fill="${K.paperLight}" ${I} stroke-width="2.200"/><circle cx="12" cy="12" r="3" fill="${K.teal}" ${I} stroke-width="2"/>`,
+  help: `<circle cx="12" cy="12" r="9" fill="${K.paperLight}" ${I} stroke-width="2.200"/><path d="M9.500 9.500a2.600 2.600 0 1 1 4 2.200c-.9.600-1.500 1.100-1.500 2.300" fill="none" ${I} stroke-width="2.200"/><circle cx="12" cy="17" r="1.200" fill="#14213a"/>`,
+  copy: `<rect x="8" y="8" width="12" height="12" rx="2.500" fill="${K.paperLight}" ${I} stroke-width="2.200"/><path d="M16 8V5.500a1.500 1.500 0 0 0-1.500-1.500h-9A1.500 1.500 0 0 0 4 5.500v9A1.500 1.500 0 0 0 5.500 16H8" fill="none" ${I} stroke-width="2.200"/>`
 };
 
 const icon = (name, cls = '') => `<svg viewBox="0 0 24 24" class="ic ${cls}" aria-hidden="true">${ICON_ART[name] || ''}</svg>`;

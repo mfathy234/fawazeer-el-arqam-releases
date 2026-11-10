@@ -4,7 +4,7 @@ function boot() {
   UI.save = settlePass(loadSave(localStorage, nowMs()), nowMs());
   applyLang();
   applyPrefs();
-  wireConfirm(); wireMenu(); wireScreens(); wireShop(); wireSettings(); wirePlay(); wireInput();
+  wireConfirm(); wireMenu(); wireScreens(); wireShop(); wireSettings(); wirePlay(); wireInput(); wireWords();
   $('#splashHost').innerHTML = hostSvg('idle');
   hydrate();
   Updater.init();

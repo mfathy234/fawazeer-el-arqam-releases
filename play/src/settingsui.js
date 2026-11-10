@@ -44,7 +44,7 @@ function digitsSeg() {
 }
 
 function confirmReset() {
-  const s = UI.save, solved = totalSolved(s) + s.free.solved, coins = s.coins, bought = boughtCount(s);
+  const s = UI.save, solved = totalSolved(s) + s.free.solved + wordsSolvedCount(s), coins = s.coins, bought = boughtCount(s);
   confirmAction({
     title: t('resetTitle'), body: t('resetBody', nf(solved), nf(coins), nf(bought)), yes: t('resetYes', nf(solved), nf(coins)), no: t('cancel'),
     onYes: () => { setSave(resetProgress(UI.save, nowMs())); applyLang(); applyPrefs(); toast(t('resetDone')); renderSettings(); }

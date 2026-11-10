@@ -1,12 +1,12 @@
 /* The shell of the game: global state UI, screen switching, the save in memory, text hydration (data-t, data-icon), toast, the shared confirm dialog,
    reduced motion (Calm) and vibration (Haptic). Screens live in screens.js, play.js, shopui.js and settingsui.js. */
 
-const $ = s => document.querySelector(s);
-const $$ = s => [...document.querySelectorAll(s)];
+const $ = (s, root = document) => root.querySelector(s);
+const $$ = (s, root = document) => [...root.querySelectorAll(s)];
 function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
 
-const SCREENS = ['splash', 'menu', 'books', 'issue', 'free', 'dailyScr', 'trophies', 'shop', 'settings', 'cw'];
-const UI = { state: 'splash', save: null, board: null, ctx: null, book: null, shopTab: 'theme', tryOn: {}, render: {} };
+const SCREENS = ['splash', 'menu', 'books', 'issue', 'free', 'dailyScr', 'trophies', 'shop', 'settings', 'cw', 'wWheel', 'wRiddle', 'wWordle', 'wProverb'];
+const UI = { state: 'splash', save: null, board: null, ctx: null, book: null, shopTab: 'theme', tryOn: {}, render: {}, menuTab: 'num', wmode: null };
 
 /** Reduced motion: the player's choice or the phone's own setting. */
 const Calm = {
@@ -101,7 +101,7 @@ function refreshScreen() {
   if (fn) fn();
 }
 
-function goMenu() { stopPuzzle(); showScreen('menu'); renderMenu(); }
+function goMenu() { stopPuzzle(); wStopAll(); showScreen('menu'); renderMenu(); }
 
 /* ---------- toast and confirm ---------- */
 let toastTimer = 0;
@@ -113,24 +113,25 @@ function toast(msg, ms = 2600) {
   toastTimer = setTimeout(() => e.classList.remove('show'), ms);
 }
 
-let confirmYes = null;
-/** The one confirmation dialog. title / body / yes name the exact thing; nothing happens unless the player taps the yes button. */
-function confirmAction({ title, body, yes, no, onYes }) {
+let confirmYes = null, confirmNo = null;
+/** The one confirmation dialog. title / body / yes name the exact thing; nothing happens unless the player taps the yes button. onNo (optional) runs when it is dismissed. */
+function confirmAction({ title, body, yes, no, onYes, onNo }) {
   $('#confirmTitle').textContent = title;
   $('#confirmBody').textContent = body;
   $('#confirmYes').textContent = yes;
   $('#confirmNo').textContent = no || t('cancel');
-  confirmYes = onYes;
+  confirmYes = onYes; confirmNo = onNo || null;
   $('#confirm').classList.add('show');
   $('#confirmNo').focus({ preventScroll: true });
 }
 
-function closeConfirm() { $('#confirm').classList.remove('show'); confirmYes = null; }
+function closeConfirm() { $('#confirm').classList.remove('show'); confirmYes = null; confirmNo = null; }
 
 function wireConfirm() {
+  const dismiss = () => { const fn = confirmNo; closeConfirm(); if (fn) fn(); };
   $('#confirmYes').addEventListener('click', () => { const fn = confirmYes; closeConfirm(); if (fn) fn(); });
-  $('#confirmNo').addEventListener('click', closeConfirm);
-  $('#confirm').addEventListener('click', e => { if (e.target.id === 'confirm') closeConfirm(); });
+  $('#confirmNo').addEventListener('click', dismiss);
+  $('#confirm').addEventListener('click', e => { if (e.target.id === 'confirm') dismiss(); });
 }
 
 /* ---------- art helpers ---------- */

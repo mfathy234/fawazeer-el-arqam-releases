@@ -28,6 +28,7 @@ function renderMenu() {
   $('#btnPass').classList.toggle('hidden', on);
   $('#passChip').classList.toggle('hidden', !on);
   if (on) $('#passChip').textContent = t('passChip', fmtPassLeft());
+  renderMenuTabs();
   hydrate($('#menu'));
 }
 
@@ -42,6 +43,7 @@ function wireMenu() {
   $('#btnPass').addEventListener('click', () => { setSave(startPass(UI.save, nowMs())); Sound.play('buy'); toast(t('passStarted')); renderMenu(); });
   $('#menuTortoise').addEventListener('click', () => { Sound.play('tea'); menuMood('sip', 1500); menuSay(line('idle')); });
   $('#menuBird').addEventListener('click', () => { Sound.play('hint'); $('#menuBird').innerHTML = birdSvg('chirp'); setTimeout(() => { $('#menuBird').innerHTML = birdSvg('idle'); }, 1200); menuSay(line('sparrow')); });
+  wireWordsMenu();
   UI.render.menu = renderMenu;
 }
 

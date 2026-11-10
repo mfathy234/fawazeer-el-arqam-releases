@@ -154,7 +154,7 @@ const Sound = {
   /** Picks the music from the game state: the daily puzzle has its own loop, other puzzles the thinking loop, everything else the lobby. */
   sync(ui) {
     if (!this.started) return;
-    const track = ui.state === 'play' ? (ui.ctx && ui.ctx.kind === 'daily' ? 'daily' : 'play') : 'menu';
+    const track = ui.state === 'play' ? (ui.ctx && ui.ctx.kind === 'daily' ? 'daily' : 'play') : isWordScreen(ui.state) ? 'play' : 'menu';
     if (track !== this.want) this.music(track);
   },
 

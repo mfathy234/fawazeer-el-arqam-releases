@@ -27,7 +27,7 @@ function newSave(now = 0) {
   Object.keys(SHOP_DEFAULTS).forEach(k => { owned[k] = [SHOP_DEFAULTS[k]]; worn[k] = SHOP_DEFAULTS[k]; });
   return {
     v: SAVE_VERSION, createdAt: now, updatedAt: now, lang: 'ar', muted: false, coins: 0, prefs: newPrefs(), books: {}, best: { easy: 0, medium: 0, hard: 0 }, free: { solved: 0 },
-    daily: newDaily(), stats: newStats(), owned, worn, ach: [], passUntil: 0, seen: { hint: false }
+    daily: newDaily(), stats: newStats(), owned, worn, ach: [], passUntil: 0, seen: { hint: false }, words: newWords()
   };
 }
 
@@ -66,7 +66,7 @@ function sanitizeShop(rawOwned, rawWorn, passOn) {
 /** Anything goes in, a valid save (or null for a non-save) comes out. */
 function sanitizeSave(raw, now = 0) {
   if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return null;
-  const known = ['coins', 'books', 'owned', 'daily', 'stats', 'lang', 'prefs', 'worn', 'best', 'free', 'ach'];
+  const known = ['coins', 'books', 'owned', 'daily', 'stats', 'lang', 'prefs', 'worn', 'best', 'free', 'ach', 'words'];
   if (!known.some(k => k in raw)) return null;
   const passUntil = Number(raw.passUntil) > now ? Math.min(Math.floor(Number(raw.passUntil)), now + PASS.hours * HOUR_MS) : 0;
   const shop = sanitizeShop(raw.owned, raw.worn, passUntil > 0);
@@ -77,7 +77,7 @@ function sanitizeSave(raw, now = 0) {
     coins: toInt(raw.coins, 0, 1e9), prefs: sanitizePrefs(raw.prefs), books: sanitizeBooks(raw.books),
     best: { easy: toInt(best.easy, 0, 1e6), medium: toInt(best.medium, 0, 1e6), hard: toInt(best.hard, 0, 1e6) }, free: { solved: toInt(free.solved, 0, 1e7) },
     daily: sanitizeDaily(raw.daily), stats: sanitizeStats(raw.stats), owned: shop.owned, worn: shop.worn,
-    ach: uniq(asArray(raw.ach).filter(id => ids.includes(id))), passUntil, seen: { hint: asObject(raw.seen).hint === true }
+    ach: uniq(asArray(raw.ach).filter(id => ids.includes(id))), passUntil, seen: { hint: asObject(raw.seen).hint === true }, words: sanitizeWords(raw.words)
   };
 }
 

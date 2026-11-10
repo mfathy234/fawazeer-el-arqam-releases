@@ -61,8 +61,8 @@ function hudUpdate() {
   $('#cwTime').textContent = mmss(B.time);
 }
 
-function confetti() {
-  const f = $('#cwFx'), cols = [K.brick, K.mustard, K.teal, K.blue, K.paperLight], n = Calm.on() ? 0 : 34;
+function confetti(target = '#cwFx') {
+  const f = $(target), cols = [K.brick, K.mustard, K.teal, K.blue, K.paperLight], n = Calm.on() ? 0 : 34;
   let h = '';
   for (let i = 0; i < n; i++) {
     const a = Math.random() * 6.283, d = 90 + Math.random() * 190;

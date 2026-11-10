@@ -1,11 +1,11 @@
 /* Fawazeer El Arqam: old Egyptian puzzle-newspaper cafe. Newsprint cream with halftone dots, ink blue-black, mustard, brick red, turquoise.
    The page is fluid (any phone), centred and at most 520px wide; the board and tray size themselves from the space they get. */
-@font-face { font-family: Lalezar; src: url(fonts/lalezar-arabic-400-normal.woff2?v=60a96eaf6e9b) format('woff2'); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF, U+200C-200F; font-display: swap; }
-@font-face { font-family: Lalezar; src: url(fonts/lalezar-latin-400-normal.woff2?v=60a96eaf6e9b) format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; font-display: swap; }
-@font-face { font-family: Cairo; font-weight: 400; src: url(fonts/cairo-arabic-400-normal.woff2?v=60a96eaf6e9b) format('woff2'); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF; font-display: swap; }
-@font-face { font-family: Cairo; font-weight: 700; src: url(fonts/cairo-arabic-700-normal.woff2?v=60a96eaf6e9b) format('woff2'); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF; font-display: swap; }
-@font-face { font-family: Cairo; font-weight: 400; src: url(fonts/cairo-latin-400-normal.woff2?v=60a96eaf6e9b) format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; font-display: swap; }
-@font-face { font-family: Cairo; font-weight: 700; src: url(fonts/cairo-latin-700-normal.woff2?v=60a96eaf6e9b) format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; font-display: swap; }
+@font-face { font-family: Lalezar; src: url(fonts/lalezar-arabic-400-normal.woff2?v=e9d13765ec0b) format('woff2'); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF, U+200C-200F; font-display: swap; }
+@font-face { font-family: Lalezar; src: url(fonts/lalezar-latin-400-normal.woff2?v=e9d13765ec0b) format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; font-display: swap; }
+@font-face { font-family: Cairo; font-weight: 400; src: url(fonts/cairo-arabic-400-normal.woff2?v=e9d13765ec0b) format('woff2'); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF; font-display: swap; }
+@font-face { font-family: Cairo; font-weight: 700; src: url(fonts/cairo-arabic-700-normal.woff2?v=e9d13765ec0b) format('woff2'); unicode-range: U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF; font-display: swap; }
+@font-face { font-family: Cairo; font-weight: 400; src: url(fonts/cairo-latin-400-normal.woff2?v=e9d13765ec0b) format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; font-display: swap; }
+@font-face { font-family: Cairo; font-weight: 700; src: url(fonts/cairo-latin-700-normal.woff2?v=e9d13765ec0b) format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; font-display: swap; }
 
 :root {
   --ink: #14213a; --inkSoft: #3a4863; --paper: #f1e6c8; --paperL: #f8f0da; --paperD: #e2d3ab; --white: #fffaf0;
